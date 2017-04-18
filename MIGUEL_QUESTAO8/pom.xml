@@ -4,7 +4,7 @@
 
   <groupId>edu.ita.maven</groupId>
   <artifactId>MIGUEL_QUESTAO8</artifactId>
-  <version>0.0</version>
+  <version>0.1</version>
   <packaging>jar</packaging>
 
   <name>MIGUEL_QUESTAO8</name>

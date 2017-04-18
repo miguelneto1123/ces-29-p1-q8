@@ -1,19 +1,24 @@
 package edu.ita.maven.MIGUEL_QUESTAO8;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import edu.ita.maven.Interfaces.Book;
 import edu.ita.maven.Interfaces.User;
 
 public class Librarian 
 {
-	List<User> users;
-	List<User> blockedUsers;
+	private List<User> users;
+	private List<User> blockedUsers;
+	private Map<Book, User> loans; // A BOOK CAN ONLY BE LOANED TO ONE PERSON!
 	
 	public Librarian()
 	{
 		users = new ArrayList<User>();
 		blockedUsers = new ArrayList<User>();
+		loans = new HashMap<Book, User>();
 	}
 	
 	public boolean addUser(User u)
@@ -30,8 +35,16 @@ public class Librarian
 	{
 		if (users.contains(u))
 		{
-			users.remove(u);
 			return blockedUsers.add(u);
+		}
+		return false;
+	}
+	
+	public boolean addLoan(Book b, User u)
+	{
+		if (users.contains(u) && !blockedUsers.contains(u)){
+			loans.put(b, u);
+			return true;
 		}
 		return false;
 	}
