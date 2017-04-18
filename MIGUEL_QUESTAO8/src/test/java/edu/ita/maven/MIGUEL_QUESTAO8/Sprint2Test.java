@@ -41,6 +41,9 @@ public class Sprint2Test extends TestCase {
 		Book b1 = mock(Book.class);
 		Book b2 = mock(Book.class);
 		
+		lsys.addBook(b1);
+		lsys.addBook(b2);
+		
 		lib.addUser(u1);
 		lib.addUser(u2);
 		lib.blockUser(u2);
@@ -56,6 +59,10 @@ public class Sprint2Test extends TestCase {
 		Book b1 = mock(Book.class);
 		Book b2 = mock(Book.class);
 		Book b3 = mock(Book.class);
+		
+		lsys.addBook(b1);
+		lsys.addBook(b2);
+		lsys.addBook(b3);
 		
 		lib.addUser(u1);
 		lib.addUser(u2);

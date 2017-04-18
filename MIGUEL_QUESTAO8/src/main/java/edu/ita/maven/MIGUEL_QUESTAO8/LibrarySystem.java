@@ -55,6 +55,7 @@ public class LibrarySystem {
 	{
 		if (users.contains(u))
 		{
+			users.remove(u);
 			return blockedUsers.add(u);
 		}
 		return false;
