@@ -26,6 +26,16 @@ public class Librarian
 		return users.remove(u);
 	}
 	
+	public boolean blockUser(User u)
+	{
+		if (users.contains(u))
+		{
+			users.remove(u);
+			return blockedUsers.add(u);
+		}
+		return false;
+	}
+	
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );

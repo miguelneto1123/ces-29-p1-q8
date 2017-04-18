@@ -2,8 +2,6 @@ package edu.ita.maven.MIGUEL_QUESTAO8;
 
 import static org.mockito.Mockito.mock;
 
-import org.junit.Before;
-
 import edu.ita.maven.Interfaces.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -46,6 +44,15 @@ public class Sprint1Test extends TestCase {
 		lib.addUser(u1);
 		assertTrue(lib.removeUser(u1));
 		assertFalse(lib.removeUser(u2));
+	}
+	
+	public void testBlockUser()
+	{
+		User u1 = mock(User.class);
+		User u2 = mock(User.class);
+		lib.addUser(u1);
+		assertTrue(lib.blockUser(u1));
+		assertFalse(lib.blockUser(u2));
 	}
 
 }
