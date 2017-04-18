@@ -53,4 +53,14 @@ public class Librarian
     {
         System.out.println( "Hello World!" );
     }
+
+	public boolean removeLoan(Book b, User u)
+	{
+		if (users.contains(u))
+			if (loans.containsKey(b)){
+				loans.remove(b);
+				return true;
+			}
+		return false;
+	}
 }

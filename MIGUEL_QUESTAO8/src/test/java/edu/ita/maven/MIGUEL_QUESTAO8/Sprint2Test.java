@@ -47,5 +47,22 @@ public class Sprint2Test extends TestCase {
 		assertTrue(lib.addLoan(b1,u1));
 		assertFalse(lib.addLoan(b2, u2));
 	}
+	
+	public void testRemoveLoan(){
+		User u1 = mock(User.class);
+		User u2 = mock(User.class);
+		User u3 = mock(User.class);
+		Book b1 = mock(Book.class);
+		Book b2 = mock(Book.class);
+		Book b3 = mock(Book.class);
+		
+		lib.addUser(u1);
+		lib.addUser(u2);
+		lib.addLoan(b1, u1);
+		
+		assertTrue(lib.removeLoan(b1,u1));
+		assertFalse(lib.removeLoan(b2, u2));
+		assertFalse(lib.removeLoan(b3,u3));
+	}
 
 }
