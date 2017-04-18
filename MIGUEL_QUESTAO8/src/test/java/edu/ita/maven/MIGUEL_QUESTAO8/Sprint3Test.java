@@ -2,11 +2,12 @@ package edu.ita.maven.MIGUEL_QUESTAO8;
 
 import static org.mockito.Mockito.mock;
 
+import edu.ita.maven.Interfaces.Book;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class Sprint1Test extends TestCase {
+public class Sprint3Test extends TestCase {
     Librarian lib;
     LibrarySystem lsys;
     /**
@@ -14,7 +15,7 @@ public class Sprint1Test extends TestCase {
      *
      * @param testName name of the test case
      */
-    public Sprint1Test( String testName )
+    public Sprint3Test( String testName )
     {
         super( testName );
         lsys = new LibrarySystem();
@@ -26,7 +27,7 @@ public class Sprint1Test extends TestCase {
      */
     public static Test suite()
     {
-        return new TestSuite( Sprint1Test.class );
+        return new TestSuite( Sprint3Test.class );
     }
     
     /**
@@ -34,26 +35,10 @@ public class Sprint1Test extends TestCase {
      * test must begin with test* so that maven-surefire-plugin
      * tests it
      */
-	public void testAddUser(){
-		User u = mock(User.class);
-		assertTrue(lib.addUser(u));
-	}
 	
-	public void testRemoveUser(){
-		User u1 = new User();
-		User u2 = new User();
-		lib.addUser(u1);
-		assertTrue(lib.removeUser(u1));
-		assertFalse(lib.removeUser(u2));
-	}
-	
-	public void testBlockUser()
-	{
-		User u1 = new User();
-		User u2 = new User();
-		lib.addUser(u1);
-		assertTrue(lib.blockUser(u1));
-		assertFalse(lib.blockUser(u2));
-	}
+    public void testCheckBook()
+    {
+    	assertTrue(true);
+    }
 
 }

@@ -3,13 +3,13 @@ package edu.ita.maven.MIGUEL_QUESTAO8;
 import static org.mockito.Mockito.mock;
 
 import edu.ita.maven.Interfaces.Book;
-import edu.ita.maven.Interfaces.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class Sprint2Test extends TestCase {
     Librarian lib;
+    LibrarySystem lsys;
     /**
      * Create the test case
      *
@@ -18,7 +18,8 @@ public class Sprint2Test extends TestCase {
     public Sprint2Test( String testName )
     {
         super( testName );
-        lib = new Librarian();
+        lsys = new LibrarySystem();
+        lib = new Librarian(lsys);
     }
 
     /**
@@ -35,8 +36,8 @@ public class Sprint2Test extends TestCase {
      * tests it
      */
 	public void testAddLoan(){
-		User u1 = mock(User.class);
-		User u2 = mock(User.class);
+		User u1 = new User();
+		User u2 = new User();
 		Book b1 = mock(Book.class);
 		Book b2 = mock(Book.class);
 		
@@ -49,9 +50,9 @@ public class Sprint2Test extends TestCase {
 	}
 	
 	public void testRemoveLoan(){
-		User u1 = mock(User.class);
-		User u2 = mock(User.class);
-		User u3 = mock(User.class);
+		User u1 = new User();
+		User u2 = new User();
+		User u3 = new User();
 		Book b1 = mock(Book.class);
 		Book b2 = mock(Book.class);
 		Book b3 = mock(Book.class);
