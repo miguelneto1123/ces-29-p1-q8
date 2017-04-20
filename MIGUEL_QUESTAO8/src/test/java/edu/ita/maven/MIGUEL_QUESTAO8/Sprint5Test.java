@@ -10,7 +10,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class Sprint4Test extends TestCase {
+public class Sprint5Test extends TestCase {
     Librarian lib;
     LibrarySystem lsys;
     /**
@@ -18,7 +18,7 @@ public class Sprint4Test extends TestCase {
      *
      * @param testName name of the test case
      */
-    public Sprint4Test( String testName )
+    public Sprint5Test( String testName )
     {
         super( testName );
         lsys = new LibrarySystem();
@@ -30,7 +30,7 @@ public class Sprint4Test extends TestCase {
      */
     public static Test suite()
     {
-        return new TestSuite( Sprint4Test.class );
+        return new TestSuite( Sprint5Test.class );
     }
     
     /**
@@ -39,7 +39,7 @@ public class Sprint4Test extends TestCase {
      * tests it
      */
 	
-    public void testStatus()
+    public void testUserBlockage()
     {
     	User u1 = new User();
     	User u2 = new User();
@@ -58,8 +58,8 @@ public class Sprint4Test extends TestCase {
 		
 		lib.addLoan(b2, u2);
 		lib.addLoan(b3, u3);
-		lsys.blockUserByDebit(u3);
-		lsys.blockUserByLateness(u2, b2);
+		lib.blockUserByDebit(u3);
+		lib.blockUserByLateness(u2, b2);
 		
 		assertEquals("Normal", u1.checkMyself(lsys));
 		assertEquals("Debit blocked", u3.checkMyself(lsys));
@@ -91,5 +91,69 @@ public class Sprint4Test extends TestCase {
 		assertEquals(l.size(), u.myLoans(lsys).size());
 		assertTrue(u.myLoans(lsys).containsAll(l));
     }
+    
+    public void testAddLoan(){
+		User u1 = new User();
+		User u2 = new User();
+		Book b1 = mock(Book.class);
+		Book b2 = mock(Book.class);
+		
+		lsys.addBook(b1);
+		lsys.addBook(b2);
+		
+		lib.addUser(u1);
+		lib.addUser(u2);
+		lib.blockUser(u2);
+		
+		assertTrue(lib.addLoan(b1,u1));
+		assertFalse(lib.addLoan(b2, u2));
+	}
+	
+	public void testRemoveLoan(){
+		User u1 = new User();
+		User u2 = new User();
+		User u3 = new User();
+		Book b1 = mock(Book.class);
+		Book b2 = mock(Book.class);
+		Book b3 = mock(Book.class);
+		
+		lsys.addBook(b1);
+		lsys.addBook(b2);
+		lsys.addBook(b3);
+		
+		lib.addUser(u1);
+		lib.addUser(u2);
+		lib.addLoan(b1, u1);
+		
+		assertTrue(lib.removeLoan(b1,u1));
+		assertFalse(lib.removeLoan(b2, u2));
+		assertFalse(lib.removeLoan(b3,u3));
+	}
+	
+	public void testBookSituation()
+	{
+    	User u1 = new User();
+    	User u2 = new User();
+    	User u3 = new User();
+
+		Book b1 = mock(Book.class);
+		Book b2 = mock(Book.class);
+		Book b3 = mock(Book.class);
+		
+		lsys.addBook(b1);
+		lsys.addBook(b2);
+		lsys.addBook(b3);
+		lib.addUser(u1);
+		lib.addUser(u2);
+		lib.addUser(u3);
+		
+		lib.addLoan(b2, u2);
+		lib.addLoan(b3, u3);
+		lsys.loseBook(b3);
+		
+		assertEquals("Available", lib.checkBook(b1));
+		assertEquals("Loaned", lib.checkBook(b2));
+		assertEquals("Lost", lib.checkBook(b3));
+	}
 
 }

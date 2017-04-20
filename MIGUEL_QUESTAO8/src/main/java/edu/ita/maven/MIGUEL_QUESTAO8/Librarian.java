@@ -26,6 +26,21 @@ public class Librarian
 		return lsys.removeUser(u);
 	}
 	
+	public boolean blockUserByLateness(User u, Book b)
+	{
+		return lsys.blockUserByLateness(u, b);
+	}
+	
+	public boolean blockUserByDebit(User u)
+	{
+		return lsys.blockUserByDebit(u);
+	}
+	
+	public String checkBook(Book b)
+	{
+		return lsys.bookSituation(b);
+	}
+	
 	public boolean addLoan(Book b, User u)
 	{
 		return lsys.addLoan(b, u);
