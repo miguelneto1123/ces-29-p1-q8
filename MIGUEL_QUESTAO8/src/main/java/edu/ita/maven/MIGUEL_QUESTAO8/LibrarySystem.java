@@ -1,6 +1,7 @@
 package edu.ita.maven.MIGUEL_QUESTAO8;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,8 @@ public class LibrarySystem {
 	private List<Book> loanedBooks;
 	private List<Book> lostBooks;
 	private List<User> users;
-	private List<User> blockedUsers;
+	private List<User> debitBlockedUsers;
+	private List<User> delayedLoanBlockedUsers;
 	private Map<Book, User> loans; // A BOOK CAN ONLY BE LOANED TO ONE PERSON!
 	
 	public LibrarySystem()
@@ -21,7 +23,8 @@ public class LibrarySystem {
 		loanedBooks = new ArrayList<Book>();
 		lostBooks = new ArrayList<Book>();
 		users = new ArrayList<User>();
-		blockedUsers = new ArrayList<User>();
+		debitBlockedUsers = new ArrayList<User>();
+		delayedLoanBlockedUsers = new ArrayList<User>();
 		loans = new HashMap<Book, User>();
 	}
 	
@@ -51,19 +54,32 @@ public class LibrarySystem {
 		return false;
 	}
 	
+	public boolean blockUserByLateness(User u, Book b){
+		if (loans.containsKey(b) && loans.get(b).equals(u)){
+			users.remove(u);
+			return delayedLoanBlockedUsers.add(u);
+		}
+		return false;
+	}
+	
+	public boolean blockUserByDebit(User u){
+		users.remove(u);
+		return debitBlockedUsers.add(u);
+	}
+	
 	public boolean blockUser(User u)
 	{
 		if (users.contains(u))
 		{
 			users.remove(u);
-			return blockedUsers.add(u);
+			return debitBlockedUsers.add(u);
 		}
 		return false;
 	}
 	
 	public boolean addLoan(Book b, User u)
 	{
-		if (users.contains(u) && !blockedUsers.contains(u) && availableBooks.contains(b)){
+		if (users.contains(u) && !debitBlockedUsers.contains(u) && availableBooks.contains(b)){
 			loans.put(b, u);
 			availableBooks.remove(b);
 			loanedBooks.add(b);
@@ -96,4 +112,24 @@ public class LibrarySystem {
 			return "Inexistent";
 	}
 
+	public String userStatus(User u) {
+		if (debitBlockedUsers.contains(u))
+			return "Debit blocked";
+		else if (delayedLoanBlockedUsers.contains(u))
+			return "Late loan blocked";
+		else if (users.contains(u))
+			return "Normal";
+		else
+			return "Inexistent";
+	}
+
+	public List<Book> loansList(User u) {
+		List<Book> list = new ArrayList<Book>();
+		for (Map.Entry<Book, User> entry : loans.entrySet()){
+			if (entry.getValue().equals(u))
+				list.add(entry.getKey());
+		}
+		return Collections.unmodifiableList(list);
+	}
+	
 }
