@@ -1,0 +1,53 @@
+commit 03a9262116b876979f94c4815eae02eb6f1e6d8f
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Thu Apr 20 18:36:24 2017 -0300
+
+    Finishing v2.0 with finished Sprint 5
+
+commit 8724f4f8e1d0a6cfa4bb22da5cfb1fba9cad12b8
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Thu Apr 20 18:29:30 2017 -0300
+
+    Finishing sprint 4, releasing version 1.1 and going to do sprint 5
+
+commit 4fbee84c39bc5da620b36804ca6f8bd04f97ab86
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 08:16:00 2017 -0300
+
+    Finishing Sprint 3 tests, fixing past tests to account for the structure change, releasing v0.3 and now going to v1.0 from implementing sqlite database
+
+commit e21343bd092d22e5761f9eade27cd6b56214b0d2
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 07:08:55 2017 -0300
+
+    Changing the project structure: creating classes User and LibrarySystem, getting rid of interface User
+
+commit 6c2204d47bd503922a7dd97ad9781cb21bc5b6ef
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 06:29:02 2017 -0300
+
+    Finishing Sprint 2 tests, releasing v0.2 and now going to v0.3 from Sprint 3
+
+commit 5f84166a9dfc3406814dcf02624649ba6921c5c5
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 06:22:47 2017 -0300
+
+    First functionality of Sprint 2
+
+commit cc72dc3231cb95b7b229680a14c41b2a0c1c000c
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 05:58:03 2017 -0300
+
+    Finishing Sprint 1 tests, releasing v0.1 and now going to v0.2 from Sprint 2
+
+commit fec4f9254ff5a1729be087efa438b58121974ba7
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 05:46:03 2017 -0300
+
+    Finishing the first 2 Sprint1 tests
+
+commit 1202f7f4f41a3798300f0ceebcc958ecf72d9872
+Author: Miguel <miguelneto.1995@hotmail.com>
+Date:   Tue Apr 18 04:49:39 2017 -0300
+
+    First commit with README
